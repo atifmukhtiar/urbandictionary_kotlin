@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_10sdp">
+
+
+    <TextView
+        android:id="@+id/txtViewWord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:text="Text"
+        android:textSize="@dimen/_14ssp"
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txtViewAuthor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtViewAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:maxLines="1"
+        android:text="Text"
+        android:textSize="@dimen/_11ssp"
+        app:layout_constraintBottom_toTopOf="@+id/txtViewDefination"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewWord" />
+
+    <TextView
+        android:id="@+id/txtViewDefination"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:textColor="@color/colorAccent"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Text"
+        android:textSize="@dimen/_11ssp"
+        app:layout_constraintBottom_toTopOf="@+id/txtViewWord"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewAuthor" />
+
+
+    <ImageView
+        android:id="@+id/imgView_thumbsUp"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:src="@drawable/icon_thumbs_up"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtViewDefination" />
+
+    <TextView
+        android:id="@+id/txtViewThumbsUp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="Text"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/_11ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imgView_thumbsDown"
+        app:layout_constraintStart_toEndOf="@+id/imgView_thumbsUp"
+        app:layout_constraintTop_toBottomOf="@id/txtViewDefination" />
+
+
+    <ImageView
+        android:id="@+id/imgView_thumbsDown"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:src="@drawable/ic_thumb_down"
+        app:layout_constraintEnd_toStartOf="@+id/txtViewThumbsDown"
+        app:layout_constraintStart_toEndOf="@+id/txtViewThumbsUp"
+        app:layout_constraintTop_toBottomOf="@id/txtViewDefination" />
+
+    <TextView
+        android:id="@+id/txtViewThumbsDown"
+        android:layout_width="0dp"
+        android:textColor="@color/colorAccent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="Text"
+        android:textSize="@dimen/_11ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgView_thumbsDown"
+        app:layout_constraintTop_toBottomOf="@id/txtViewDefination" />
+    
+
+</androidx.constraintlayout.widget.ConstraintLayout>
