@@ -1,6 +1,5 @@
 package com.jadgroup.urbankotlin.viewmodels
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.jadgroup.urbankotlin.models.Album
