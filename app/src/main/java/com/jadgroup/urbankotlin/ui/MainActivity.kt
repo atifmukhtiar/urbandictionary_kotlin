@@ -12,26 +12,36 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jadgroup.urbankotlin.R
+import com.jadgroup.urbankotlin.UrbanApplication
 import com.jadgroup.urbankotlin.adapter.DictionaryAdapter
+import com.jadgroup.urbankotlin.interfaces.AlbumAPIs
 import com.jadgroup.urbankotlin.models.Album
 import com.jadgroup.urbankotlin.models.AlbumList
-import com.jadgroup.urbankotlin.networks.RetroClient
 import com.jadgroup.urbankotlin.viewmodels.ViewModelMainActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.Retrofit
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     var context: Context? = null
+
+    var viewModelMainActivity = ViewModelMainActivity()
+
+    @Inject
     lateinit var dictionaryAdapter: DictionaryAdapter
-    var viewModelMainActivity = ViewModelMainActivity();
+
+    @Inject
+    lateinit var retroClient: AlbumAPIs
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         context = this;
+        (application as UrbanApplication).getComponent().inject(this)
         initResources();
         initViewModel();
         setOnClickListener()
@@ -60,7 +70,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun initRecyclerView() {
         rv_dictionary.apply {
             layoutManager = LinearLayoutManager(context)
-            dictionaryAdapter = DictionaryAdapter()
             adapter = dictionaryAdapter
         }
 
@@ -78,7 +87,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun getAlbumList(term: String) {
-        RetroClient.getClient()?.getAlbumList(term)?.enqueue(object : Callback<AlbumList> {
+        retroClient.getAlbumList(term).enqueue(object : Callback<AlbumList> {
             override fun onResponse(call: Call<AlbumList>, response: Response<AlbumList>) {
                 val listAlbumList = response.body()
                 viewModelMainActivity.setAlbumLiveData(listAlbumList?.albums as ArrayList<Album>)

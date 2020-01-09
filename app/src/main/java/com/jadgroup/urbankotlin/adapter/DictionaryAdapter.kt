@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jadgroup.urbankotlin.R
 import com.jadgroup.urbankotlin.models.Album
 import kotlinx.android.synthetic.main.dictionary_adapter_item.view.*
-import java.lang.String
 import java.util.*
 import kotlin.Comparator
 import kotlin.collections.ArrayList
@@ -37,8 +36,8 @@ class DictionaryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         viewHolder.txtViewWord.text = album.word
         viewHolder.txtViewAuthor.text = album.author
         viewHolder.txtViewDefination.text = album.defination
-        viewHolder.txtViewThumbsUp.text = String.valueOf(album.thumbsUp)
-        viewHolder.txtViewThumbsDown.text = String.valueOf(album.thumbsDown)
+        viewHolder.txtViewThumbsUp.text = album.thumbsUp.toString()
+        viewHolder.txtViewThumbsDown.text = album.thumbsDown.toString()
 
     }
 
