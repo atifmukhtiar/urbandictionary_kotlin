@@ -19,9 +19,9 @@ data class Album(
     @SerializedName("thumbs_up")
     @Expose
     val thumbsUp: Int? = null,
-    @SerializedName("sound_urls")
+  /*  @SerializedName("sound_urls")
     @Expose
-    val soundUrls: List<String>? = null,
+    val soundUrls: List<String>? = null,*/
     @SerializedName("author")
     @Expose
     val author: String? = null,

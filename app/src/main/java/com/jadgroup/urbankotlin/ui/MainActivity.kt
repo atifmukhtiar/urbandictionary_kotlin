@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.jadgroup.urbankotlin.R
 import com.jadgroup.urbankotlin.UrbanApplication
 import com.jadgroup.urbankotlin.adapter.DictionaryAdapter
+import com.jadgroup.urbankotlin.pojos.Album
 import com.jadgroup.urbankotlin.viewmodels.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
-                mainActivityViewModel.getAlbumList(charSequence.toString())
+                mainActivityViewModel.getRepositoryServerAlbumList(charSequence.toString())
                 showProgress()
             }
 
@@ -66,10 +67,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             .get<MainActivityViewModel>(MainActivityViewModel::class.java)
         mainActivityViewModel.getAlbumLiveData()
             .observe(context as LifecycleOwner, Observer {
-                dictionaryAdapter.updateData(it)
+                dictionaryAdapter.updateData(it as ArrayList<Album>)
                 hideProgress()
             })
-        mainActivityViewModel.getAlbumList("")
+        mainActivityViewModel.getRepositoryServerAlbumList("")
     }
 
     private fun setOnClickListener() {

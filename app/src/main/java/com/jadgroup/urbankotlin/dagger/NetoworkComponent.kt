@@ -11,4 +11,5 @@ import javax.inject.Singleton
 interface NetoworkComponent {
     fun inject(mainActivity: MainActivity)
     fun inject(mainActivityViewModel: MainActivityViewModel)
+    fun inject(albumRepository: AlbumRepository)
 }
