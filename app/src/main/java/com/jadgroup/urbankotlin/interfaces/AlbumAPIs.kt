@@ -1,6 +1,6 @@
 package com.jadgroup.urbankotlin.interfaces
 
-import com.jadgroup.urbankotlin.models.AlbumList
+import com.jadgroup.urbankotlin.pojos.AlbumList
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers

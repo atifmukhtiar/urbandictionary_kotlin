@@ -1,4 +1,4 @@
-package com.jadgroup.urbankotlin.models
+package com.jadgroup.urbankotlin.pojos
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
