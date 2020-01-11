@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jadgroup.urbankotlin.R
-import com.jadgroup.urbankotlin.models.Album
+import com.jadgroup.urbankotlin.pojos.Album
 import kotlinx.android.synthetic.main.dictionary_adapter_item.view.*
 import java.util.*
 import kotlin.Comparator
@@ -61,7 +61,7 @@ class DictionaryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
 
 
-    class DictionaryViewHolder(rootView: View) : RecyclerView.ViewHolder(rootView) {
+    companion object class DictionaryViewHolder(rootView: View) : RecyclerView.ViewHolder(rootView) {
         val txtViewWord = rootView.txtViewWord
         val txtViewAuthor = rootView.txtViewAuthor
         val txtViewDefination = rootView.txtViewDefination
