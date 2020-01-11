@@ -1,10 +1,15 @@
-package com.jadgroup.urbankotlin.models
+package com.jadgroup.urbankotlin.pojos
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
+@Entity
 data class Album(
 
+    @PrimaryKey(autoGenerate = true)
+    var id: Int,
     @SerializedName("definition")
     @Expose
     val defination: String? = null,
