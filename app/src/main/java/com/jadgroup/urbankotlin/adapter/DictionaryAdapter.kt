@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jadgroup.urbankotlin.R
-import com.jadgroup.urbankotlin.pojos.Album
+import com.jadgroup.urbankotlin.pojos.Words
 import kotlinx.android.synthetic.main.dictionary_adapter_item.view.*
 import java.util.*
 import kotlin.Comparator
@@ -13,7 +13,7 @@ import kotlin.collections.ArrayList
 
 class DictionaryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var albumList: ArrayList<Album> = ArrayList();
+    private var wordsList: ArrayList<Words> = ArrayList();
     private var isThumbsUp = true
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -27,11 +27,11 @@ class DictionaryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return albumList.size;
+        return wordsList.size;
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val album = albumList.get(position)
+        val album = wordsList.get(position)
         val viewHolder = holder as DictionaryViewHolder
         viewHolder.txtViewWord.text = album.word
         viewHolder.txtViewAuthor.text = album.author
@@ -41,20 +41,20 @@ class DictionaryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     }
 
-    fun updateData(albumList: ArrayList<Album>) {
-        this.albumList.clear()
-        this.albumList.addAll(albumList)
+    fun updateData(wordsList: ArrayList<Words>) {
+        this.wordsList.clear()
+        this.wordsList.addAll(wordsList)
         notifyDataSetChanged()
     }
 
     fun sortList(isThumbsUp: Boolean) {
         this.isThumbsUp = isThumbsUp
-        Collections.sort<Album>(albumList, albumComparator)
+        Collections.sort<Words>(wordsList, albumComparator)
         this.notifyDataSetChanged()
     }
 
     var albumComparator =
-        Comparator<Album> { album1, album2 ->
+        Comparator<Words> { album1, album2 ->
             if (isThumbsUp) {
                 album2.thumbsUp!! - album1.thumbsUp!!
             } else album2.thumbsDown!! - album1.thumbsDown!!

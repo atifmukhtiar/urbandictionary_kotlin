@@ -1,6 +1,6 @@
 package com.jadgroup.urbankotlin
 
-import com.jadgroup.urbankotlin.pojos.AlbumList
+import com.jadgroup.urbankotlin.pojos.WordsList
 import com.jadgroup.urbankotlin.networks.RetroClient
 import okhttp3.internal.notify
 import okhttp3.internal.wait
@@ -21,17 +21,17 @@ class MainActivityViewModelTest {
 
     @Test
     fun testApiResponseOK() {
-        RetroClient.getClient()?.getAlbumList("")?.enqueue(object : Callback<AlbumList?> {
+        RetroClient.getClient()?.getAlbumList("")?.enqueue(object : Callback<WordsList?> {
             override fun onResponse(
-                call: Call<AlbumList?>,
-                response: Response<AlbumList?>
+                call: Call<WordsList?>,
+                response: Response<WordsList?>
             ) {
                 Assert.assertEquals(200, response.code().toLong())
                 println("test pass")
                 synchronized(lock) { lock.notify() }
             }
 
-            override fun onFailure(call: Call<AlbumList?>, t: Throwable) {
+            override fun onFailure(call: Call<WordsList?>, t: Throwable) {
                 Assert.fail()
                 println("fail")
                 synchronized(lock) { lock.notify() }

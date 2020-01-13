@@ -3,9 +3,9 @@ package com.jadgroup.urbankotlin.pojos
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class AlbumList {
+class WordsList {
 
     @SerializedName("list")
     @Expose
-    val albums: List<Album>? = null
+    val words: List<Words>? = null
 }

@@ -1,6 +1,6 @@
 package com.jadgroup.urbankotlin.interfaces
 
-import com.jadgroup.urbankotlin.pojos.AlbumList
+import com.jadgroup.urbankotlin.pojos.WordsList
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -13,5 +13,5 @@ interface AlbumAPIs {
         "x-rapidapi-key:PijukZnDjhmsh7JMpD0hdTVZhIvyp1MIlamjsn9Ig8j9tra8kp"
     )
     @GET("define")//?term=wat
-    fun getAlbumList(@Query("term") term: String): Call<AlbumList>
+    fun getAlbumList(@Query("term") term: String): Call<WordsList>
 }

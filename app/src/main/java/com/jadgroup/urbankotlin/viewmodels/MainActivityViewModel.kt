@@ -6,8 +6,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.jadgroup.urbankotlin.UrbanApplication
 import com.jadgroup.urbankotlin.interfaces.AlbumAPIs
-import com.jadgroup.urbankotlin.pojos.Album
-import com.jadgroup.urbankotlin.pojos.AlbumList
+import com.jadgroup.urbankotlin.pojos.Words
+import com.jadgroup.urbankotlin.pojos.WordsList
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,27 +19,27 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
         (application as UrbanApplication).getComponent().inject(this)
     }
 
-    private val albumLiveData: MutableLiveData<ArrayList<Album>> = MutableLiveData()
+    private val wordsLiveData: MutableLiveData<ArrayList<Words>> = MutableLiveData()
 
-    fun setAlbumLiveData(albumLiveData: ArrayList<Album>) {
-        this.albumLiveData.value = albumLiveData
+    fun setAlbumLiveData(wordsLiveData: ArrayList<Words>) {
+        this.wordsLiveData.value = wordsLiveData
     }
 
-    fun getAlbumLiveData(): MutableLiveData<ArrayList<Album>> {
-        return albumLiveData
+    fun getAlbumLiveData(): MutableLiveData<ArrayList<Words>> {
+        return wordsLiveData
     }
 
 
     @Inject
     lateinit var retroClient: AlbumAPIs
     fun getAlbumList(term: String) {
-        retroClient.getAlbumList(term).enqueue(object : Callback<AlbumList> {
-            override fun onResponse(call: Call<AlbumList>, response: Response<AlbumList>) {
+        retroClient.getAlbumList(term).enqueue(object : Callback<WordsList> {
+            override fun onResponse(call: Call<WordsList>, response: Response<WordsList>) {
                 val listAlbumList = response.body()
-                setAlbumLiveData(listAlbumList?.albums as ArrayList<Album>)
+                setAlbumLiveData(listAlbumList?.words as ArrayList<Words>)
             }
 
-            override fun onFailure(call: Call<AlbumList>, t: Throwable) {
+            override fun onFailure(call: Call<WordsList>, t: Throwable) {
                 Log.d("onFailure", "");
             }
         })
